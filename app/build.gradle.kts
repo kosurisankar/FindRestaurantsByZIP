@@ -72,6 +72,12 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.androidx.ui.test.junit4.android)
+    androidTestImplementation (libs.androidx.espresso.core)
+    androidTestImplementation (libs.androidx.rules)
+    testImplementation (libs.mockito.core)
+    androidTestImplementation (libs.mockito.android)
+    androidTestImplementation (libs.androidx.navigation.testing)
     // https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit
 
 

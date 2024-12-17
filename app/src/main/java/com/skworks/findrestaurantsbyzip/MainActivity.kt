@@ -42,6 +42,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -78,7 +79,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun SearchScreen(navigation: NavController) {
     var zip by remember {
-        mutableStateOf("77077")
+        mutableStateOf("")
     }
     Box(
         modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
@@ -94,17 +95,18 @@ fun SearchScreen(navigation: NavController) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-                Image(
-                    painter = painterResource(id = R.drawable.reshot_icon_square_food),
-                    contentDescription = "Logo",
-                    contentScale = ContentScale.Crop
-                )
+            Image(
+                painter = painterResource(id = R.drawable.reshot_icon_square_food),
+                contentDescription = "Logo",
+                contentScale = ContentScale.Crop
+            )
             Spacer(modifier = Modifier.padding(70.dp))
             TextField(
                 value = zip,
                 onValueChange = { zip = it },
                 placeholder = { Text(text = "Enter Your Zip Code") },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+               modifier = Modifier.testTag("zipCodeEt")
             )
             Spacer(modifier = Modifier.padding(20.dp))
             Button(
@@ -143,7 +145,7 @@ fun RestaurantListScreen(zipCode: Int, viewModel: RestaurantViewModel = viewMode
             SearchBarWithIcon(searchQuery) { query ->
                 searchQuery = query
             }
-        }) { paddingValues ->
+        }, modifier = Modifier.testTag("searchBar")) { paddingValues ->
             Box(
                 modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
             ) {
@@ -158,6 +160,7 @@ fun RestaurantListScreen(zipCode: Int, viewModel: RestaurantViewModel = viewMode
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(paddingValues)
+                        .testTag("lazyColumn")
                 ) {
                     items(filteredRestaurants) { res ->
                         RestaurantItem(res)

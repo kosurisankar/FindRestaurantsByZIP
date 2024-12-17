@@ -3,6 +3,7 @@ package com.skworks.findrestaurantsbyzip
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.skworks.findrestaurantsbyzip.RetrofitInstance.retrofit
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -22,7 +23,7 @@ class RestaurantViewModel() : ViewModel() {
         viewModelScope.launch {
             try {
 //                val response = retrofit.getRestaurantsLocation(zipCode, page)
-                val response = restaurantsDataClass(
+                val response = RestaurantsDataClass(
                     restaurants = listOf(
                         RestaurantsList(
                             restaurantName = "Wally's",

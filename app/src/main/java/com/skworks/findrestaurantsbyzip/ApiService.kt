@@ -7,7 +7,7 @@ interface ApiService
 {
     @GET("restaurants/location/zipcode/{zipCode}/{pageNumber}")
 
-    suspend fun getRestaurantsLocation(@Path("zipCode") zipCode: Int, @Path("pageNumber") pageNumber: Int) : restaurantsDataClass
+    suspend fun getRestaurantsLocation(@Path("zipCode") zipCode: Int, @Path("pageNumber") pageNumber: Int) : RestaurantsDataClass
 //    @GET("restaurants/location/zipcode/{zipcode}/0")
 //    suspend fun getRestaurantsLocation(
 //        @Path("zipCode") zipCode: Int?,

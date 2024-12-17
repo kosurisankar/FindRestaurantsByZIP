@@ -3,7 +3,7 @@ package com.skworks.findrestaurantsbyzip
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class restaurantsDataClass(
+data class RestaurantsDataClass(
     val restaurants: List<RestaurantsList>
 )
 data class RestaurantsList (
